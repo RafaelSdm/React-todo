@@ -1,7 +1,10 @@
+
+import {Column} from '../components'
+
 export const NotFound = () =>{
     return(
-        <div>
+        <Column>
             <h1>Error 404 - Endereço não encontrado</h1>
-        </div>
+        </Column>
     )
 }

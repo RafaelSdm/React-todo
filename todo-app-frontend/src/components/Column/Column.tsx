@@ -14,4 +14,5 @@ export const Column =styled.div<ColumnProps>`
     ${color}
     ${borderRadius}
     ${borderLeft}
+    text-align: center;
 `
