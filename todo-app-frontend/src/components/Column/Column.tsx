@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import {layout, LayoutProps, space, SpaceProps} from 'styled-system'
+import {layout, LayoutProps, space, SpaceProps, color, ColorProps, borderRadius, BorderRadiusProps, borderLeft, BorderLeftProps } from 'styled-system'
 
 
 
-type ColumnProps = LayoutProps & SpaceProps;
+type ColumnProps = LayoutProps & SpaceProps & ColorProps & BorderRadiusProps & BorderLeftProps;
 
 export const Column =styled.div<ColumnProps>`
 
@@ -11,4 +11,7 @@ export const Column =styled.div<ColumnProps>`
     flex-direction: column;
     ${layout}
     ${space}
+    ${color}
+    ${borderRadius}
+    ${borderLeft}
 `

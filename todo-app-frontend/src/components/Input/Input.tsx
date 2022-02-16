@@ -1,4 +1,4 @@
-import { type } from "os"
+
 import styled from "styled-components"
 import {flex, FlexProps} from 'styled-system'
 
@@ -11,6 +11,7 @@ export const Input = styled.input<InputProps>`
     border: 0;
     border-bottom: 2px solid rgba(255,255,255,0.2)
     color: #fff;
+    outline: none;
 
 
     &::placeholder{
