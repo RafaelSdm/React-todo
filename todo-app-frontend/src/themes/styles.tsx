@@ -11,6 +11,8 @@ export const GlobalStyles = createGlobalStyle<{theme: ThemeType}>`
         padding: 0;
         font-family: 'Shizuru', cursive;
         color: #fff;
+        border: 0;
+        box-sizing: border-box;
     
     }
 

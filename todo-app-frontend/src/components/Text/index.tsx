@@ -1,1 +1,1 @@
-import * from './Text'
+export * from './Text'
