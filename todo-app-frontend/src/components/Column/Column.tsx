@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import {layout, LayoutProps, space, SpaceProps, color, ColorProps, borderRadius, BorderRadiusProps, borderLeft, BorderLeftProps } from 'styled-system'
+import {layout, LayoutProps, space, SpaceProps, color, ColorProps, borderRadius, BorderRadiusProps, borderLeft, BorderLeftProps, flexbox, FlexboxProps } from 'styled-system'
 
 
 
-type ColumnProps = LayoutProps & SpaceProps & ColorProps & BorderRadiusProps & BorderLeftProps;
+type ColumnProps = LayoutProps & SpaceProps & ColorProps & BorderRadiusProps & BorderLeftProps &FlexboxProps;
 
 export const Column =styled.div<ColumnProps>`
 
@@ -14,5 +14,6 @@ export const Column =styled.div<ColumnProps>`
     ${color}
     ${borderRadius}
     ${borderLeft}
-    text-align: center;
+    ${flexbox}
+    
 `
