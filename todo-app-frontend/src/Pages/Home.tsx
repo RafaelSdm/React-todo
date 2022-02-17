@@ -1,4 +1,4 @@
-import {Text, Input, Button, Row, Column, List, Logo} from '../components'
+import {Text, Input, Button, Row, Column, List, Logo, Icon} from '../components'
 
 import {useState} from 'react'
 
@@ -53,6 +53,42 @@ export const Home = () =>{
                 <Button variant='primary' >
                     <Text fontFamily='secondary' fontWeight='bold' fontSize='bodyExtraLarge' color='primary' >START</Text>
                 </Button>
+
+
+
+                <Row p='20px'>
+
+                    <Button variant='primary' p='10px 20px' mx='5px'>
+
+                        <Icon variant='play'/>
+
+                    </Button>
+
+                     <Button variant='primary' p='10px 20px' mx='5px'>
+
+                         <Icon variant='pause'/>
+
+                     </Button>
+
+                     
+                     <Button variant='primary' p='10px 20px' mx='5px'>
+
+                         <Icon variant='stop'/>
+
+                     </Button>
+
+                     
+                     <Button variant='primary' p='10px 20px' mx='5px'>
+
+                         <Icon variant='restart'/>
+
+                     </Button>
+
+
+
+                </Row>
+
+               
 
             
             </Column>

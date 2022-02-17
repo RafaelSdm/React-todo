@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { variant } from "styled-system";
+import { variant, space, SpaceProps } from "styled-system";
 
 
-type ButtonProps ={
+type ButtonProps = SpaceProps & {
     variant?: string
 }
 
@@ -31,6 +31,8 @@ export const Button = styled.button<ButtonProps>`
             }
         }
     })}
+
+    ${space}
 
 
 `;
