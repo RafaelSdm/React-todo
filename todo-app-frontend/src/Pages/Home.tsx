@@ -6,8 +6,12 @@ export const Home = () =>{
 
     const[taskName, setTaskName] = useState('');
 
-
+    const SECOND_DEFAULT = 60;
     const[tasks, setTasks] = useState<{label: string} []>([])
+
+    const[seconds, setSeconds] = useState(SECOND_DEFAULT)
+
+    const[timer, setTimer] = useState<any>();
 
 
     const handleOKButton = () =>{
@@ -31,6 +35,42 @@ export const Home = () =>{
 
     }
 
+
+
+
+    const secondsTimer = (secs: number) =>{
+        const divisorMinute = secs % 3600;
+
+        const minutes = Math.floor(divisorMinute / 60)
+        const seconds = Math.ceil(divisorMinute % 60);
+
+
+        return `${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2, '0')}`
+    }
+
+
+
+
+    const startTimer = () =>{
+       // console.log('fazendo teste de click de botao')
+        const timerInterval = setInterval(() =>{
+           //console.log("print")
+           setSeconds( (previousValues) =>{
+
+            if(previousValues === 0){
+                clearInterval(timerInterval);
+                return 0;
+            }
+               console.log(`${previousValues}`)
+               return previousValues -1;
+           });
+           
+
+       }, 1000)
+
+       setTimer(timerInterval)
+    }
+
     return(
 
         
@@ -47,10 +87,10 @@ export const Home = () =>{
             <Column alignItems='center' p='20px'  width='100%' minHeight='300px' bg='rgba(255,255,255,0.2)'>
 
                 <Text fontFamily='secondary' fontSize='bodyExtraLarge' >Ready</Text>
-                <Text fontFamily='secondary' fontSize='displayExtraLarge' fontWeight='bold' p='30px' >25:00</Text>
+                <Text fontFamily='secondary' fontSize='displayExtraLarge' fontWeight='bold' p='30px' >{secondsTimer(seconds)}</Text>
 
 
-                <Button variant='primary' >
+                <Button onClick={startTimer} variant='primary' >
                     <Text fontFamily='secondary' fontWeight='bold' fontSize='bodyExtraLarge' color='primary' >START</Text>
                 </Button>
 
