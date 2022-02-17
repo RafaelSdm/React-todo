@@ -44,11 +44,14 @@ export const Home = () =>{
 
             </Column>
 
-            <Column width='100%' minHeight='300px' bg='rgba(255,255,255,0.2)'>
+            <Column alignItems='center' p='20px'  width='100%' minHeight='300px' bg='rgba(255,255,255,0.2)'>
+
+                <Text fontFamily='secondary' fontSize='bodyExtraLarge' >Ready</Text>
+                <Text fontFamily='secondary' fontSize='displayExtraLarge' fontWeight='bold' p='30px' >25:00</Text>
 
 
                 <Button variant='primary' >
-                    <Text>START</Text>
+                    <Text fontFamily='secondary' fontWeight='bold' fontSize='bodyExtraLarge' color='primary' >START</Text>
                 </Button>
 
             
