@@ -6,7 +6,7 @@ export const Home = () =>{
 
     const[taskName, setTaskName] = useState('');
 
-    const SECOND_DEFAULT = 30;
+    const SECOND_DEFAULT = 1500;
     const[tasks, setTasks] = useState<{label: string} []>([])
 
     const[seconds, setSeconds] = useState(SECOND_DEFAULT)
@@ -71,6 +71,27 @@ export const Home = () =>{
        setTimer(timerInterval)
     }
 
+
+
+    const handlePauseButton = () =>{
+        clearInterval(timer)
+        setTimer(undefined)
+    }
+
+
+
+    const handleStopButton = () =>{
+
+        handlePauseButton();
+        setSeconds(SECOND_DEFAULT)
+    }
+
+    const handleRestartButton = () =>{
+        
+        setSeconds(SECOND_DEFAULT)
+        startTimer();
+    }
+
     return(
 
         
@@ -98,30 +119,34 @@ export const Home = () =>{
 
                 <Row p='20px'>
 
-                    <Button variant='primary' p='10px 20px' mx='5px'>
+                    <Button onClick={startTimer} variant='primary' p='10px 20px' mx='5px'>
 
                         <Icon variant='play'/>
 
                     </Button>
 
-                     <Button variant='primary' p='10px 20px' mx='5px'>
+                     <Button onClick={handlePauseButton} variant='primary' p='10px 20px' mx='5px'>
 
-                         <Icon variant='pause'/>
+                         <Icon  variant='pause'/>
 
                      </Button>
 
                      
-                     <Button variant='primary' p='10px 20px' mx='5px'>
+                     <Button onClick={handleStopButton} variant='primary' p='10px 20px' mx='5px'>
 
                          <Icon variant='stop'/>
 
                      </Button>
 
                      
-                     <Button variant='primary' p='10px 20px' mx='5px'>
+                     <Button onClick={handleRestartButton} variant='primary' p='10px 20px' mx='5px'>
 
                          <Icon variant='restart'/>
 
+                     </Button>
+
+                     <Button variant='primary' p='10px 20px' mx='px'>
+                         <Icon variant='done'></Icon>
                      </Button>
 
 
