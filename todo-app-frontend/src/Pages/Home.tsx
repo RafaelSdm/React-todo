@@ -6,7 +6,7 @@ export const Home = () =>{
 
     const[taskName, setTaskName] = useState('');
 
-    const SECOND_DEFAULT = 60;
+    const SECOND_DEFAULT = 30;
     const[tasks, setTasks] = useState<{label: string} []>([])
 
     const[seconds, setSeconds] = useState(SECOND_DEFAULT)
