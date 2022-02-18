@@ -13,6 +13,8 @@ export const Home = () =>{
 
     const[timer, setTimer] = useState<any>();
 
+    const[stage, setStage] = useState('Ready')
+
 
     const handleOKButton = () =>{
 
@@ -52,6 +54,7 @@ export const Home = () =>{
 
 
     const startTimer = () =>{
+        setStage('In progress!')
        // console.log('fazendo teste de click de botao')
         const timerInterval = setInterval(() =>{
            //console.log("print")
@@ -59,6 +62,8 @@ export const Home = () =>{
 
             if(previousValues === 0){
                 clearInterval(timerInterval);
+                setStage('Done')
+                setTimer(undefined)
                 return 0;
             }
                console.log(`${previousValues}`)
@@ -84,6 +89,7 @@ export const Home = () =>{
 
         handlePauseButton();
         setSeconds(SECOND_DEFAULT)
+        setStage('Ready')
     }
 
     const handleRestartButton = () =>{
@@ -107,7 +113,7 @@ export const Home = () =>{
 
             <Column alignItems='center' p='20px'  width='100%' minHeight='300px' bg='rgba(255,255,255,0.2)'>
 
-                <Text fontFamily='secondary' fontSize='bodyExtraLarge' >Ready</Text>
+                <Text fontFamily='secondary' fontSize='bodyExtraLarge' >{stage}</Text>
                 <Text fontFamily='secondary' fontSize='displayExtraLarge' fontWeight='bold' p='30px' >{secondsTimer(seconds)}</Text>
 
 
