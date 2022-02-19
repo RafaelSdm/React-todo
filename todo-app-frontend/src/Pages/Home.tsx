@@ -1,6 +1,7 @@
 import {Text, Input, Button, Row, Column, List, Logo, Icon} from '../components'
 
-import {useState} from 'react'
+import {Fragment, useMemo, useState} from 'react'
+import { resourceUsage } from 'process';
 
 export const Home = () =>{
 
@@ -54,7 +55,7 @@ export const Home = () =>{
 
 
     const startTimer = () =>{
-        setStage('In progress!')
+        setStage('In-progress')
        // console.log('fazendo teste de click de botao')
         const timerInterval = setInterval(() =>{
            //console.log("print")
@@ -98,6 +99,94 @@ export const Home = () =>{
         startTimer();
     }
 
+
+
+
+    const handleStageStatus = useMemo (() =>{
+        switch(stage){
+            case 'Ready':
+                return 'Ready'
+                break;
+
+            case 'In-progress':
+                return 'time to work'
+                break;
+            case 'Done':
+                return 'finished';
+        }
+    }, [stage])
+
+
+
+    const handleStageButtons = useMemo( () =>{
+
+        switch(stage){
+            case 'In-progress':
+                return (
+                    <Fragment>
+
+                       
+
+
+
+                        <Button onClick={startTimer} variant='primary' p='10px 20px' mx='5px'>
+
+                            <Icon variant='play'/>
+
+                        </Button>
+
+                            <Button onClick={handlePauseButton} variant='primary' p='10px 20px' mx='5px'>
+
+                             <Icon  variant='pause'/>
+
+                            </Button>
+
+
+                            <Button onClick={handleStopButton} variant='primary' p='10px 20px' mx='5px'>
+
+                             <Icon variant='stop'/>
+
+                            </Button>
+
+
+                            
+
+                           
+
+                    </Fragment>
+                )
+            
+            case 'Ready':
+
+                   
+                return(
+
+                    <Fragment>
+                         <Button onClick={startTimer} variant='primary' >
+                            <Text fontFamily='secondary' fontWeight='bold' fontSize='bodyExtraLarge' color='primary' >START</Text>
+                         </Button>
+                       
+                        
+                    </Fragment>
+
+                )
+
+            case 'Done':
+                return(
+
+                    <>
+
+                    </>
+
+                )
+        }
+
+       
+    }, [stage])
+
+
+
+
     return(
 
         
@@ -113,47 +202,17 @@ export const Home = () =>{
 
             <Column alignItems='center' p='20px'  width='100%' minHeight='300px' bg='rgba(255,255,255,0.2)'>
 
-                <Text fontFamily='secondary' fontSize='bodyExtraLarge' >{stage}</Text>
+                <Text fontFamily='secondary' fontSize='bodyExtraLarge' >{handleStageStatus}</Text>
                 <Text fontFamily='secondary' fontSize='displayExtraLarge' fontWeight='bold' p='30px' >{secondsTimer(seconds)}</Text>
 
 
-                <Button onClick={startTimer} variant='primary' >
-                    <Text fontFamily='secondary' fontWeight='bold' fontSize='bodyExtraLarge' color='primary' >START</Text>
-                </Button>
+                
 
 
 
                 <Row p='20px'>
 
-                    <Button onClick={startTimer} variant='primary' p='10px 20px' mx='5px'>
-
-                        <Icon variant='play'/>
-
-                    </Button>
-
-                     <Button onClick={handlePauseButton} variant='primary' p='10px 20px' mx='5px'>
-
-                         <Icon  variant='pause'/>
-
-                     </Button>
-
-                     
-                     <Button onClick={handleStopButton} variant='primary' p='10px 20px' mx='5px'>
-
-                         <Icon variant='stop'/>
-
-                     </Button>
-
-                     
-                     <Button onClick={handleRestartButton} variant='primary' p='10px 20px' mx='5px'>
-
-                         <Icon variant='restart'/>
-
-                     </Button>
-
-                     <Button variant='primary' p='10px 20px' mx='px'>
-                         <Icon variant='done'></Icon>
-                     </Button>
+                 {handleStageButtons}
 
 
 
